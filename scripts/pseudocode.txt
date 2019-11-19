@@ -16,7 +16,7 @@ app.showError = () => {
 }
 
 app.bindEvents = () => {
-  //search button
+  //search button to call getRecs
   //search bar
   //drop down filter
 }
@@ -25,8 +25,11 @@ app.bindEvents = () => {
 
 app.init = () => {
   console.log("Document Loaded");
+  //start app
 }
 
 $(document).ready(function(){
   app.init();
 });
+
+
