@@ -1,13 +1,32 @@
 const app = {};
 
-app.getRecs = () => {
+app.url = `https://tastedive.com/api/similar?`;
+app.key = `349895-MediaRec-TXFIUD0F`;
+
+app.getRecs = (query) => {
   //ajax call
+  $.ajax(
+    {
+      url: app.url,
+      method: 'GET',
+      dataType: 'jsonp',
+      data: {
+        k: app.key,
+        q: query,
+        info: 1
+      }
+    }
+  ).then( (response) => { app.showRecs(response); });
   //then pass results to showRecs
 }
 
-app.showRecs = () => {
+app.showRecs = (results) => {
   //filter results
   //display results on dom
+  // console.log(results.Similar.Results);
+  results.Similar.Results.forEach((rec) => {
+    $('ul').append(`<li>${rec.Name}</li>`);
+  })
 }
 
 app.showError = () => {
@@ -24,7 +43,7 @@ app.bindEvents = () => {
 
 
 app.init = () => {
-  console.log("Document Loaded");
+  app.getRecs('Drake');
 }
 
 $(document).ready(function(){
