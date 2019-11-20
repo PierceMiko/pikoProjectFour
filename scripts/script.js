@@ -16,15 +16,18 @@ app.getRecs = (query) => {
         info: 1
       }
     }
-  ).then( (response) => { app.showRecs(response); });
+  ).then( (results) => { 
+    app.showRecs(results); 
+  });
   //then pass results to showRecs
 }
 
 app.showRecs = (results) => {
   //filter results
   //display results on dom
-  // console.log(results.Similar.Results);
-  results.Similar.Results.forEach((rec) => {
+  console.log(results.Similar.Info);
+  $('ul').empty();
+  results.Similar.Results.forEach( (rec) => {
     $('ul').append(`<li>${rec.Name}</li>`);
   })
 }
@@ -38,12 +41,18 @@ app.bindEvents = () => {
   //search button
   //search bar
   //drop down filter
+  $('form').on('submit', function(event){
+    event.preventDefault();
+    const query = $('#searchMedia').val();
+    app.getRecs(query);
+  });
 }
 
 
 
 app.init = () => {
-  app.getRecs('Drake');
+  app.bindEvents();
+  // app.getRecs('green');
 }
 
 $(document).ready(function(){

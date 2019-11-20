@@ -221,7 +221,7 @@ html {
           box-sizing: inherit;
 }
 
-.visually-hidden:not(:focus):not(:active) {
+.visuallyHidden:not(:focus):not(:active) {
   position: absolute !important;
   height: 1px;
   width: 1px;
@@ -259,5 +259,15 @@ ul {
 }
 
 body {
-  background: red;
+  background: #FEFEFE;
+}
+
+.logo {
+  width: 120px;
+}
+
+ul li {
+  font-size: 1.5rem;
+  padding: 10px 0;
+  border-top: 2px solid slateblue;
 }
