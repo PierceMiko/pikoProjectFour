@@ -43,7 +43,7 @@ app.bindEvents = () => {
 
 
 app.init = () => {
-  app.getRecs('Drake');
+  app.getRecs('up');
 }
 
 $(document).ready(function(){
