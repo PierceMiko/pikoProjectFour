@@ -51,10 +51,7 @@ app.bindEvents = () => {
 
 
 app.init = () => {
-
   app.bindEvents();
-  // app.getRecs('green');
-
 }
 
 $(document).ready(function(){

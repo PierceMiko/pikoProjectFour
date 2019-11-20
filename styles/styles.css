@@ -258,6 +258,31 @@ ul {
   margin: 0 auto;
 }
 
+.bigP,
+.smallIko {
+  stroke: black;
+  fill: white;
+  z-index: 15;
+}
+
+@-webkit-keyframes pathIn {
+  0% {
+    stroke-dashoffset: 175px;
+  }
+  100% {
+    stroke-dashoffset: 0px;
+  }
+}
+
+@keyframes pathIn {
+  0% {
+    stroke-dashoffset: 175px;
+  }
+  100% {
+    stroke-dashoffset: 0px;
+  }
+}
+
 body {
   background: #FEFEFE;
 }
