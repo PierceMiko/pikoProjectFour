@@ -1,9 +1,55 @@
 @import "./setUp";
 @import "./animations";
+@import "./colours";
 
 body {
-  background: #FEFEFE;
+  background: #010101;
+      color: $primaryColor;
+      font-family: 'open sans', sans-serif;
 }
+
+
+header {
+  background-image: url(../assets/header-bg.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  min-height: 90vh;
+  
+  .headerContent{
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 3rem;
+    input {
+      color: white;
+      padding: 5px 15px;
+      border:1px solid $primaryColor;
+      background-color: #ffffff00;
+      border-radius: 20px;
+        &::placeholder {
+          color: $primaryColor;
+          
+
+
+        }
+    }
+
+    button {
+      border-radius: 20px;
+      padding: 5px 15px;
+      border: none;
+    }
+
+
+    h1 {
+      font-size: 8rem;
+      font-family: 'Cantarell', sans-serif;
+
+    }
+  }
+}
+
+
 
 .logo {
   width: 120px;

@@ -260,9 +260,21 @@ ul {
 
 .bigP,
 .smallIko {
-  stroke: black;
-  fill: white;
+  stroke: #f4efd3;
+  fill: #000;
+  stroke-dasharray: 175px;
+  stroke-dashoffset: 175px;
   z-index: 15;
+}
+
+.bigP {
+  -webkit-animation: pathIn 3s forwards;
+          animation: pathIn 3s forwards;
+}
+
+.smallIko {
+  -webkit-animation: pathIn 10s forwards;
+          animation: pathIn 10s forwards;
 }
 
 @-webkit-keyframes pathIn {
@@ -284,7 +296,58 @@ ul {
 }
 
 body {
-  background: #FEFEFE;
+  background: #010101;
+  color: #f4efd3;
+  font-family: 'open sans', sans-serif;
+}
+
+header {
+  background-image: url(../assets/header-bg.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  min-height: 90vh;
+}
+
+header .headerContent {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 3rem;
+}
+
+header .headerContent input {
+  color: white;
+  padding: 5px 15px;
+  border: 1px solid #f4efd3;
+  background-color: #ffffff00;
+  border-radius: 20px;
+}
+
+header .headerContent input::-webkit-input-placeholder {
+  color: #f4efd3;
+}
+
+header .headerContent input:-ms-input-placeholder {
+  color: #f4efd3;
+}
+
+header .headerContent input::-ms-input-placeholder {
+  color: #f4efd3;
+}
+
+header .headerContent input::placeholder {
+  color: #f4efd3;
+}
+
+header .headerContent button {
+  border-radius: 20px;
+  padding: 5px 15px;
+  border: none;
+}
+
+header .headerContent h1 {
+  font-size: 8rem;
+  font-family: 'Cantarell', sans-serif;
 }
 
 .logo {

@@ -36,7 +36,8 @@ app.showError = () => {
   //display errors on around search bars
   //display "no recs found" in results area
   // $('ul').empty();
-  $('ul').html(`<li>  </li>`);
+  $('ul').html(`<li> </li>`);
+  
 }
 
 app.bindEvents = () => {

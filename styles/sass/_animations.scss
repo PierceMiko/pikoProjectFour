@@ -1,17 +1,17 @@
 .bigP,
 .smallIko {
-  stroke: black;
-  fill: white;
-  // stroke-dasharray: 175px;
-  // stroke-dashoffset: 175px;
+  stroke: #f4efd3;
+  fill: #000;
+  stroke-dasharray: 175px;
+  stroke-dashoffset: 175px;
   z-index: 15;
 }
 .bigP {
-  // animation: pathIn 3s forwards;
+  animation: pathIn 3s forwards;
 }
 
 .smallIko {
-  // animation: pathIn 10s forwards;
+  animation: pathIn 10s forwards;
 }
 
 @keyframes pathIn {
