@@ -372,7 +372,12 @@ button {
   color: black;
 }
 
+.hidden {
+  display: none;
+}
+
 ul .userQuery {
+  padding: 25px 0;
   border: 1px solid white;
 }
 
@@ -380,4 +385,73 @@ ul li {
   font-size: 1.5rem;
   padding: 10px 0;
   border-top: 2px solid slateblue;
+  position: relative;
+}
+
+ul li h2, ul li h3 {
+  margin: 0;
+}
+
+ul li h2 {
+  font-style: italic;
+}
+
+ul li h3 {
+  margin-left: 10px;
+}
+
+ul li p {
+  line-height: 22px;
+  overflow: hidden;
+  -webkit-transition: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+  transition: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+
+ul li a {
+  position: absolute;
+  top: 10px;
+  font-size: 2rem;
+}
+
+.title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.title i {
+  margin-right: 10px;
+  -webkit-transition: all 0.35s;
+  transition: all 0.35s;
+}
+
+.youtube:hover, .youtube:focus,
+.wiki:hover,
+.wiki:focus {
+  color: #782200;
+}
+
+.youtube {
+  right: 10px;
+}
+
+.wiki {
+  right: 40px;
+}
+
+.hiddenDescription {
+  max-height: 0;
+  margin: 0;
+}
+
+.rotated {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+main form {
+  padding: 25px 0;
 }
