@@ -315,6 +315,29 @@ header .headerContent {
   font-size: 3rem;
 }
 
+header .headerContent form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header .headerContent form input {
+  width: 50%;
+  text-align: center;
+}
+
+header .headerContent form button {
+  margin-top: 25px;
+  width: 35%;
+}
+
 header .headerContent h1 {
   font-size: 8rem;
   font-family: 'Cantarell', sans-serif;
@@ -376,15 +399,10 @@ button {
   display: none;
 }
 
-ul .userQuery {
-  padding: 25px 0;
-  border: 1px solid white;
-}
-
 ul li {
   font-size: 1.5rem;
   padding: 10px 0;
-  border-top: 2px solid slateblue;
+  border-top: 2px solid #7B8DCF;
   position: relative;
 }
 
@@ -420,18 +438,31 @@ ul li a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  cursor: pointer;
 }
 
 .title i {
   margin-right: 10px;
   -webkit-transition: all 0.35s;
   transition: all 0.35s;
+  color: rgba(123, 141, 207, 0.3);
 }
 
-.youtube:hover, .youtube:focus,
-.wiki:hover,
-.wiki:focus {
-  color: #782200;
+.title .rotated {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  color: #7B8DCF;
+}
+
+.youtube i,
+.wiki i {
+  color: #77756a;
+}
+
+.youtube:hover i, .youtube:focus i,
+.wiki:hover i,
+.wiki:focus i {
+  color: #7B8DCF;
 }
 
 .youtube {
@@ -445,11 +476,6 @@ ul li a {
 .hiddenDescription {
   max-height: 0;
   margin: 0;
-}
-
-.rotated {
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
 }
 
 main form {

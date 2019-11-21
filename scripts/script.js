@@ -6,7 +6,7 @@ app.key = `349895-MediaRec-TXFIUD0F`;
 
 app.checkQuery = (query) => {
   if(query !== ''){
-    $('#bottomSearch').fadeIn();
+    $('#bottomControls').fadeIn();
     app.getRecs(query);
   }else{
     app.showUserError();
@@ -35,17 +35,28 @@ app.getRecs = (query) => {
 app.showRecs = (results) => {
   //filter results
   //display results on dom
-  console.log(results.Similar.Results);
+  const filteredList = app.filterRecs(results.Similar.Results);
+  console.log(filteredList);
   app.$list.empty();
-  app.$list.append(`<li class="userQuery">${results.Similar.Info[0].Name}</li>`)
-  results.Similar.Results.forEach( (rec) => {
+  app.$list.append(
+    `<li class="userQuery">
+      <div class="title">
+        <i class="fas fa-plus"></i>
+      	<h2>${results.Similar.Info[0].Name}</h2>
+        <h3>(${results.Similar.Info[0].Type})</h3>
+      </div>
+      <p id="description" class="hiddenDescription">${results.Similar.Info[0].wTeaser}</p>
+      <a href="${results.Similar.Info[0].wUrl}" class="wiki" target="_blank"><i class="fab fa-wikipedia-w"></i></a>
+      <a href="${results.Similar.Info[0].yUrl}" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+    </li>`
+  );
+  filteredList.forEach( (rec) => {
     const content = 
     `<li>
       <div class="title">
         <i class="fas fa-plus"></i>
       	<h2>${rec.Name}</h2>
-        <h3>(${rec.Type})</h3>
-        
+        <h3>(${rec.Type})</h3>      
       </div>
       <p id="description" class="hiddenDescription">${rec.wTeaser}</p>
       <a href="${rec.wUrl}" class="wiki" target="_blank"><i class="fab fa-wikipedia-w"></i></a>
@@ -73,6 +84,16 @@ app.showUserError = () => {
   warningBox.delay(1000).fadeOut();
 }
 
+app.filterRecs = (list) => {
+  const genreFilter = $('#genreFilter').val();
+  if(genreFilter === 'all'){
+    return list;
+  }else {
+    return list.filter((rec) => {
+      return rec.Type === genreFilter;
+    });
+  }
+}
 
 app.bindEvents = () => {
   //search button
