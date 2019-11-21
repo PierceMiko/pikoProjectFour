@@ -298,7 +298,7 @@ ul {
 }
 
 body {
-  background: #010101;
+  background: #000;
   color: #f4efd3;
   font-family: 'open sans', sans-serif;
 }
@@ -313,6 +313,13 @@ header {
 }
 
 header .headerContent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   text-align: center;
   text-transform: uppercase;
   font-size: 3rem;
@@ -388,19 +395,47 @@ button {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+  position: relative;
+  bottom: 190px;
   text-transform: none;
-  background-color: #f4efd3;
-  color: black;
+  color: #ff0000;
 }
 
 .hidden {
   display: none;
 }
 
+.bottomControls {
+  padding: 20px 0px;
+}
+
+.bottomControls form {
+  padding: 10px;
+  text-align: center;
+}
+
+.bottomControls input,
+.bottomControls button,
+.bottomControls select {
+  padding: 10px 30px;
+  font-size: 1.5rem;
+}
+
+.bottomControls select {
+  border-radius: 20px;
+  border: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-image: url(../../assets/chevron.svg);
+  background-repeat: no-repeat;
+  background-position: 90%;
+}
+
 ul li {
   font-size: 1.5rem;
   padding: 10px 0;
-  border-top: 2px solid #7B8DCF;
+  border-top: 2px solid #acadbc;
   position: relative;
 }
 
@@ -414,9 +449,11 @@ ul li h2 {
 
 ul li h3 {
   margin-left: 10px;
+  color: #717171c0;
 }
 
 ul li p {
+  color: #fff;
   line-height: 22px;
   overflow: hidden;
   -webkit-transition: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
@@ -443,7 +480,7 @@ ul li a {
   margin-right: 10px;
   -webkit-transition: all 0.35s;
   transition: all 0.35s;
-  color: rgba(123, 141, 207, 0.3);
+  color: rgba(123, 141, 207, 0.6);
 }
 
 .title .rotated {
@@ -454,7 +491,7 @@ ul li a {
 
 .youtube i,
 .wiki i {
-  color: #77756a;
+  color: #949494;
 }
 
 .youtube:hover i, .youtube:focus i,
@@ -474,8 +511,4 @@ ul li a {
 .hiddenDescription {
   max-height: 0;
   margin: 0;
-}
-
-main form {
-  padding: 25px 0;
 }

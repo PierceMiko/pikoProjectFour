@@ -2,7 +2,7 @@ const app = {};
 
 app.url = `https://tastedive.com/api/similar?`;
 app.key = `349895-MediaRec-TXFIUD0F`;
-
+app.currentList = [];
 
 app.checkQuery = (query) => {
   if(query !== ''){
@@ -27,7 +27,8 @@ app.getRecs = (query) => {
       }
     }
   ).then( (results) => { 
-    app.showRecs(results); 
+    app.currentList = results.Similar;
+    app.showRecs(app.currentList); 
   });
   //then pass results to showRecs
 }
@@ -35,20 +36,19 @@ app.getRecs = (query) => {
 app.showRecs = (results) => {
   //filter results
   //display results on dom
-  const filteredList = app.filterRecs(results.Similar.Results);
-  console.log(filteredList);
+  const filteredList = app.filterRecs(results.Results);
   app.$list.empty();
   app.$list.append(`<h3>You searched for:</h3>`);
   app.$list.append(
     `<li class="userQuery">
       <div class="title">
         <i class="fas fa-plus"></i>
-      	<h2>${results.Similar.Info[0].Name}</h2>
-        <h3>(${results.Similar.Info[0].Type})</h3>
+      	<h2>${results.Info[0].Name}</h2>
+        <h3>(${results.Info[0].Type})</h3>
       </div>
-      <p id="description" class="hiddenDescription">${results.Similar.Info[0].wTeaser}</p>
-      <a href="${results.Similar.Info[0].wUrl}" class="wiki" target="_blank"><i class="fab fa-wikipedia-w"></i></a>
-      <a href="${results.Similar.Info[0].yUrl}" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+      <p id="description" class="hiddenDescription">${results.Info[0].wTeaser}</p>
+      <a href="${results.Info[0].wUrl}" class="wiki" target="_blank"><i class="fab fa-wikipedia-w"></i></a>
+      <a href="${results.Info[0].yUrl}" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>
     </li>`
   );
   app.$list.append(`<h3>Here are your recommendations:</h3>`);
@@ -119,6 +119,11 @@ app.bindEvents = () => {
     $(this).siblings('#description').toggleClass('hiddenDescription');
     $(this).find('.fas').toggleClass('rotated');
   });
+
+  $('#genreFilter').on('change', function(){
+    app.showRecs(app.currentList);
+  });
+  
 }
 
 app.getDomElements = () => {
