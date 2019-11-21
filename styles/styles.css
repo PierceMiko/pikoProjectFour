@@ -427,7 +427,7 @@ button {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  background-image: url(../../assets/chevron.svg);
+  background-image: url(../assets/chevron.svg);
   background-repeat: no-repeat;
   background-position: 90%;
 }
