@@ -3,6 +3,16 @@ const app = {};
 app.url = `https://tastedive.com/api/similar?`;
 app.key = `349895-MediaRec-TXFIUD0F`;
 
+
+app.checkQuery = (query) => {
+  if(query !== ''){
+    $('#bottomSearch').fadeIn();
+    app.getRecs(query);
+  }else{
+    app.showUserError();
+  }
+}
+
 app.getRecs = (query) => {
   //ajax call
   $.ajax(
@@ -25,11 +35,23 @@ app.getRecs = (query) => {
 app.showRecs = (results) => {
   //filter results
   //display results on dom
-  console.log(results.Similar.Info);
+  console.log(results.Similar.Results);
   app.$list.empty();
   app.$list.append(`<li class="userQuery">${results.Similar.Info[0].Name}</li>`)
   results.Similar.Results.forEach( (rec) => {
-    app.$list.append(`<li>${rec.Name}</li>`);
+    const content = 
+    `<li>
+      <div class="title">
+        <i class="fas fa-plus"></i>
+      	<h2>${rec.Name}</h2>
+        <h3>(${rec.Type})</h3>
+        
+      </div>
+      <p id="description" class="hiddenDescription">${rec.wTeaser}</p>
+      <a href="${rec.wUrl}" class="wiki" target="_blank"><i class="fab fa-wikipedia-w"></i></a>
+      <a href="${rec.yUrl}" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+    </li>`
+    app.$list.append(content);
   });
   //Scroll to list
   const y = $('main').offset().top;
@@ -57,14 +79,22 @@ app.bindEvents = () => {
   //search bar
   //drop down filter
 
-  $('form').on('submit', function(event){
+  $('#topSearch').on('submit', function(event){
     event.preventDefault();
-    const query = $('#searchMedia').val();
-    if(query !== ''){
-      app.getRecs(query);
-    }else{
-      app.showUserError();
-    }
+    const query = $('#topSearch input').val();
+    $('#bottomSearch input').val(query);
+    app.checkQuery(query);
+  });
+  $('#bottomSearch').on('submit', function(event){
+    event.preventDefault();
+    const query = $('#bottomSearch input').val();
+    $('#topSearch input').val(query);
+    app.checkQuery(query);
+  });
+
+  $('ul').on('click', 'li div', function(){
+    $(this).siblings('#description').toggleClass('hiddenDescription');
+    $(this).find('.fas').toggleClass('rotated');
   });
 }
 
