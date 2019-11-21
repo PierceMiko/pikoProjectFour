@@ -302,10 +302,10 @@ body {
 }
 
 header {
-  background-image: url(../assets/header-bg.jpg);
+  background-image: url(../assets/header-image.jpg);
   background-size: cover;
   background-attachment: fixed;
-  background-position: center;
+  background-position: right bottom;
   min-height: 90vh;
 }
 
@@ -316,33 +316,34 @@ header .headerContent {
 }
 
 header .headerContent input {
-  color: white;
+  color: #f4efd3;
   padding: 5px 15px;
-  border: 1px solid #f4efd3;
-  background-color: #ffffff00;
+  border: 1px solid #ffffff4b;
+  background-color: rgba(255, 255, 255, 0);
   border-radius: 20px;
 }
 
 header .headerContent input::-webkit-input-placeholder {
-  color: #f4efd3;
+  color: #ffffff4b;
 }
 
 header .headerContent input:-ms-input-placeholder {
-  color: #f4efd3;
+  color: #ffffff4b;
 }
 
 header .headerContent input::-ms-input-placeholder {
-  color: #f4efd3;
+  color: #ffffff4b;
 }
 
 header .headerContent input::placeholder {
-  color: #f4efd3;
+  color: #ffffff4b;
 }
 
 header .headerContent button {
   border-radius: 20px;
   padding: 5px 15px;
   border: none;
+  background-color: #f4efd3;
 }
 
 header .headerContent h1 {

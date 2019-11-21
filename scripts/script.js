@@ -37,13 +37,14 @@ app.showError = () => {
   //display "no recs found" in results area
   // $('ul').empty();
   $('ul').html(`<li> </li>`);
-  
+
 }
 
 app.bindEvents = () => {
   //search button
   //search bar
   //drop down filter
+
   $('form').on('submit', function(event){
     event.preventDefault();
     const query = $('#searchMedia').val();

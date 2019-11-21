@@ -10,10 +10,10 @@ body {
 
 
 header {
-  background-image: url(../assets/header-bg.jpg);
+  background-image: url(../assets/header-image.jpg);
   background-size: cover;
   background-attachment: fixed;
-  background-position: center;
+  background-position:right bottom;
   min-height: 90vh;
   
   .headerContent{
@@ -21,16 +21,14 @@ header {
     text-transform: uppercase;
     font-size: 3rem;
     input {
-      color: white;
+      color: $primaryColor;
       padding: 5px 15px;
-      border:1px solid $primaryColor;
-      background-color: #ffffff00;
+      border:1px solid #ffffff4b;
+      background-color: rgba(255, 255, 255, 0);
       border-radius: 20px;
+
         &::placeholder {
-          color: $primaryColor;
-          
-
-
+          color: #ffffff4b;
         }
     }
 
@@ -38,9 +36,10 @@ header {
       border-radius: 20px;
       padding: 5px 15px;
       border: none;
+      background-color: $primaryColor;
     }
 
-
+// TRANSFER ANIMATION INTO H1 INSTEAD OF LOGO
     h1 {
       font-size: 8rem;
       font-family: 'Cantarell', sans-serif;
