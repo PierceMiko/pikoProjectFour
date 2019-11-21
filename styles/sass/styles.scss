@@ -1,7 +1,7 @@
 @import "./setUp";
-@import "./animations";
-@import "./colours";
 
+@import "./colours";
+@import "./animations";
 body {
   background: #010101;
       color: $primaryColor;
@@ -16,6 +16,8 @@ header {
   background-position:right bottom;
   min-height: 90vh;
   
+  padding-top: 25px;  
+
   .headerContent{
     text-align: center;
     text-transform: uppercase;
@@ -35,10 +37,7 @@ header {
     }
 
 // TRANSFER ANIMATION INTO H1 INSTEAD OF LOGO
-    h1 {
-      font-size: 8rem;
-      font-family: 'Cantarell', sans-serif;
-    }
+  
   }
 }
 
@@ -65,8 +64,12 @@ button {
 
 
 .logo {
-  width: 120px;
+  width: 40px;
 }
+.information {
+  
+}
+
 .userWarning {
   margin: 0 auto;
   width: 450px;

@@ -1,24 +1,22 @@
-.bigP,
-.smallIko {
+.strokeIn {
   stroke: #f4efd3;
-  fill: #000;
-  stroke-dasharray: 175px;
-  stroke-dashoffset: 175px;
+  stroke-dasharray: 345px;
+  stroke-dashoffset: 345px;
   z-index: 15;
-}
-.bigP {
-  animation: pathIn 3s forwards;
-}
-
-.smallIko {
-  animation: pathIn 10s forwards;
+  animation: pathIn 3s forwards cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
 @keyframes pathIn {
   0% {
-    stroke-dashoffset: 175px;
+    stroke-dashoffset: 345px;
+    fill: black;
   }
-  100% {
+  80% {
     stroke-dashoffset: 0px;
+    fill: black;
+  }
+  100% {  
+    stroke-dashoffset: 0px;
+    fill: $primaryColor;
   }
 }

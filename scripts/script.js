@@ -38,6 +38,7 @@ app.showRecs = (results) => {
   const filteredList = app.filterRecs(results.Similar.Results);
   console.log(filteredList);
   app.$list.empty();
+  app.$list.append(`<h3>You searched for:</h3>`);
   app.$list.append(
     `<li class="userQuery">
       <div class="title">
@@ -50,6 +51,7 @@ app.showRecs = (results) => {
       <a href="${results.Similar.Info[0].yUrl}" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>
     </li>`
   );
+  app.$list.append(`<h3>Here are your recommendations:</h3>`);
   filteredList.forEach( (rec) => {
     const content = 
     `<li>

@@ -258,40 +258,42 @@ ul {
   margin: 0 auto;
 }
 
-.bigP,
-.smallIko {
+.strokeIn {
   stroke: #f4efd3;
-  fill: #000;
-  stroke-dasharray: 175px;
-  stroke-dashoffset: 175px;
+  stroke-dasharray: 345px;
+  stroke-dashoffset: 345px;
   z-index: 15;
-}
-
-.bigP {
-  -webkit-animation: pathIn 3s forwards;
-          animation: pathIn 3s forwards;
-}
-
-.smallIko {
-  -webkit-animation: pathIn 10s forwards;
-          animation: pathIn 10s forwards;
+  -webkit-animation: pathIn 3s forwards cubic-bezier(0.445, 0.05, 0.55, 0.95);
+          animation: pathIn 3s forwards cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
 @-webkit-keyframes pathIn {
   0% {
-    stroke-dashoffset: 175px;
+    stroke-dashoffset: 345px;
+    fill: black;
+  }
+  80% {
+    stroke-dashoffset: 0px;
+    fill: black;
   }
   100% {
     stroke-dashoffset: 0px;
+    fill: #f4efd3;
   }
 }
 
 @keyframes pathIn {
   0% {
-    stroke-dashoffset: 175px;
+    stroke-dashoffset: 345px;
+    fill: black;
+  }
+  80% {
+    stroke-dashoffset: 0px;
+    fill: black;
   }
   100% {
     stroke-dashoffset: 0px;
+    fill: #f4efd3;
   }
 }
 
@@ -307,6 +309,7 @@ header {
   background-attachment: fixed;
   background-position: right bottom;
   min-height: 90vh;
+  padding-top: 25px;
 }
 
 header .headerContent {
@@ -336,11 +339,6 @@ header .headerContent form input {
 header .headerContent form button {
   margin-top: 25px;
   width: 35%;
-}
-
-header .headerContent h1 {
-  font-size: 8rem;
-  font-family: 'Cantarell', sans-serif;
 }
 
 input {
@@ -376,7 +374,7 @@ button {
 }
 
 .logo {
-  width: 120px;
+  width: 40px;
 }
 
 .userWarning {
