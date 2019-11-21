@@ -26,19 +26,31 @@ app.showRecs = (results) => {
   //filter results
   //display results on dom
   console.log(results.Similar.Info);
-  $('ul').empty();
+  app.$list.empty();
+  app.$list.append(`<li class="userQuery">${results.Similar.Info[0].Name}</li>`)
   results.Similar.Results.forEach( (rec) => {
-    $('ul').append(`<li>${rec.Name}</li>`);
-  })
+    app.$list.append(`<li>${rec.Name}</li>`);
+  });
+  //Scroll to list
+  const y = $('main').offset().top;
+  $("html, body").animate({ scrollTop: y }, 750, "swing");
 }
 
-app.showError = () => {
+app.showApiError = () => {
   //display errors on around search bars
   //display "no recs found" in results area
   // $('ul').empty();
   $('ul').html(`<li> </li>`);
 
 }
+
+app.showUserError = () => {
+  const warningBox = $('#userWarning')
+  warningBox.css({display: 'flex'});
+  // setInterval(function() { warningBox.css({display: 'none'}); }, 5000);
+  warningBox.delay(1000).fadeOut();
+}
+
 
 app.bindEvents = () => {
   //search button
@@ -51,14 +63,18 @@ app.bindEvents = () => {
     if(query !== ''){
       app.getRecs(query);
     }else{
-      app.showError();
+      app.showUserError();
     }
   });
 }
 
+app.getDomElements = () => {
+  app.$list = $('ul');
+}
 
 
 app.init = () => {
+  app.getDomElements();
   app.bindEvents();
 }
 

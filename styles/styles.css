@@ -315,7 +315,12 @@ header .headerContent {
   font-size: 3rem;
 }
 
-header .headerContent input {
+header .headerContent h1 {
+  font-size: 8rem;
+  font-family: 'Cantarell', sans-serif;
+}
+
+input {
   color: #f4efd3;
   padding: 5px 15px;
   border: 1px solid #ffffff4b;
@@ -323,36 +328,52 @@ header .headerContent input {
   border-radius: 20px;
 }
 
-header .headerContent input::-webkit-input-placeholder {
+input::-webkit-input-placeholder {
   color: #ffffff4b;
 }
 
-header .headerContent input:-ms-input-placeholder {
+input:-ms-input-placeholder {
   color: #ffffff4b;
 }
 
-header .headerContent input::-ms-input-placeholder {
+input::-ms-input-placeholder {
   color: #ffffff4b;
 }
 
-header .headerContent input::placeholder {
+input::placeholder {
   color: #ffffff4b;
 }
 
-header .headerContent button {
+button {
   border-radius: 20px;
   padding: 5px 15px;
   border: none;
   background-color: #f4efd3;
-}
-
-header .headerContent h1 {
-  font-size: 8rem;
-  font-family: 'Cantarell', sans-serif;
+  cursor: pointer;
 }
 
 .logo {
   width: 120px;
+}
+
+.userWarning {
+  margin: 0 auto;
+  width: 450px;
+  border-radius: 20px;
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  text-transform: none;
+  background-color: #f4efd3;
+  color: red;
+}
+
+ul .userQuery {
+  border: 1px solid white;
 }
 
 ul li {
