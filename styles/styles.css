@@ -313,7 +313,6 @@ body {
 header {
   background-image: url(../assets/header-image.jpg);
   background-size: cover;
-  background-attachment: fixed;
   background-position: right bottom;
   min-height: 90vh;
   padding-top: 25px;
@@ -330,6 +329,7 @@ header .headerContent {
   text-align: center;
   text-transform: uppercase;
   font-size: 3rem;
+  margin-top: 18vh;
 }
 
 header .headerContent form {
@@ -348,6 +348,7 @@ header .headerContent form {
 header .headerContent form input {
   width: 50%;
   text-align: center;
+  border-radius: 0px;
 }
 
 @media only screen and (max-width: 675px) {
@@ -455,6 +456,8 @@ button {
 .bottomControls select {
   padding: 10px 30px;
   font-size: 1.5rem;
+  width: 40%;
+  max-width: 300px;
 }
 
 @media only screen and (max-width: 675px) {
@@ -476,8 +479,14 @@ button {
   background-image: url(../assets/chevron.svg);
   background-repeat: no-repeat;
   background-position: 90%;
-  background-size: 15%;
+  background-size: 10%;
   background-color: #7B8DCF;
+}
+
+@media only screen and (max-width: 675px) {
+  .bottomControls select {
+    background-size: 5%;
+  }
 }
 
 .bottomControls .userWarning {

@@ -140,7 +140,9 @@ app.bindEvents = () => {
     e.preventDefault();
     $('li p').toggleClass('hiddenDescription');
     //Cool ternary operator idea found at https://www.tutorialrepublic.com/faq/how-to-toggle-text-inside-an-element-on-click-using-jquery.php
-    $(this).text($(this).text() === 'Expand All' ? 'Collapse All' : 'Expand All');
+    $(this).text(
+        $(this).text() === 'Expand All' ? 'Collapse All' : 'Expand All'
+      );
   });
 }
 
