@@ -326,6 +326,12 @@ header .headerContent {
   margin-top: 18vh;
 }
 
+header .headerContent h2 {
+  font-size: 2rem;
+  color: #eee;
+  text-shadow: 0px 5px 5px #7B8DCF;
+}
+
 header .headerContent form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -404,16 +410,6 @@ button {
   width: 40px;
 }
 
-.information {
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 2rem;
-  cursor: pointer;
-  padding: 5px;
-  padding-bottom: 1px;
-}
-
 .userWarning {
   margin: 0 auto;
   width: 450px;
@@ -426,9 +422,20 @@ button {
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
   position: relative;
-  bottom: 190px;
+  bottom: 180px;
   text-transform: none;
   color: #ff0000;
+}
+
+@media only screen and (max-width: 675px) {
+  .userWarning {
+    width: 100%;
+    font-size: 2rem;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    bottom: 160px;
+  }
 }
 
 .hidden {
@@ -501,8 +508,20 @@ button {
           justify-content: center;
 }
 
+@media only screen and (max-width: 675px) {
+  .bottomControls .userWarning {
+    top: -100px;
+    font-size: 1.7rem;
+  }
+}
+
 ul .userQuery {
   border: none;
+}
+
+ul h3 {
+  font-size: 1.6rem;
+  color: #7B8DCF;
 }
 
 ul li {
@@ -536,6 +555,7 @@ ul li h2 {
 ul li h3 {
   margin-left: 10px;
   color: #717171c0;
+  font-size: 2rem;
 }
 
 @media only screen and (max-width: 675px) {
