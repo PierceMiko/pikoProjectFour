@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Neuse</title>
   <link href="https://fonts.googleapis.com/css?family=Cantarell:700|Open+Sans:300,400,700&display=swap" rel="stylesheet">
 
   <link rel='stylesheet' href='styles/styles.css'>
@@ -20,15 +20,16 @@
          <img src="./assets/pikoLogo.svg" alt="">       
         </a>
       </div> <!-- End of Logo Div -->
-
-      <i class="fas fa-info-circle information"></i>
+      
+      <button id='informationButton' class='information'> <i class="fas fa-info-circle"></i> </button>
+     
 
       <!-- Start of Header Content Div -->
       <div class="headerContent">
         <h1>
           <svg class="strokeIn" xmlns="http://www.w3.org/2000/svg" width="295" height="57" viewBox="0 0 295 57">
             <text fill-rule="evenodd" font-family="Cantarell-Bold, Cantarell" font-size="80" font-weight="bold">
-              <tspan x="-11" y="56">NEUSE</tspan>
+              <tspan x="-11" y="56">Neuse</tspan>
             </text>
           </svg>
         </h1>
@@ -55,6 +56,11 @@
           <input type="text" name="searchMedia" placeholder="find something new">
           <button>Search</button>
         </form>
+        <!-- Start of User Warning Div -->
+        <div class="userWarning" id="userWarning">
+          <i class="fas fa-exclamation-circle"></i>
+          <p>Please enter a search term.</p>
+        </div> <!-- End of User Warning Div -->
         <form action="submit">
           <select name="genre" id="genreFilter">
             <option value="all">All</option>
@@ -66,7 +72,7 @@
             <option value="author">Authors</option>
             <option value="game">Games</option>
           </select>
-          <button>Expand All</button>
+          <button id="expandAll">Expand All</button>
         </form>
       </div>
       <!-- Start of Results List -->

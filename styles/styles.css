@@ -265,6 +265,7 @@ ul {
   z-index: 15;
   -webkit-animation: pathIn 3s forwards cubic-bezier(0.445, 0.05, 0.55, 0.95);
           animation: pathIn 3s forwards cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  text-transform: uppercase;
 }
 
 @-webkit-keyframes pathIn {
@@ -294,6 +295,12 @@ ul {
   100% {
     stroke-dashoffset: 0px;
     fill: #f4efd3;
+  }
+}
+
+@media only screen and (max-width: 355px) {
+  .wrapper {
+    width: 100%;
   }
 }
 
@@ -343,9 +350,25 @@ header .headerContent form input {
   text-align: center;
 }
 
+@media only screen and (max-width: 675px) {
+  header .headerContent form input {
+    width: 100%;
+  }
+}
+
 header .headerContent form button {
   margin-top: 25px;
   width: 35%;
+}
+
+@media only screen and (max-width: 675px) {
+  header .headerContent form button {
+    width: 100%;
+  }
+}
+
+header .wrapper {
+  position: relative;
 }
 
 input {
@@ -386,6 +409,16 @@ button {
   width: 40px;
 }
 
+.information {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 5px;
+  padding-bottom: 1px;
+}
+
 .userWarning {
   margin: 0 auto;
   width: 450px;
@@ -409,6 +442,7 @@ button {
 
 .bottomControls {
   padding: 20px 0px;
+  position: relative;
 }
 
 .bottomControls form {
@@ -423,6 +457,15 @@ button {
   font-size: 1.5rem;
 }
 
+@media only screen and (max-width: 675px) {
+  .bottomControls input,
+  .bottomControls button,
+  .bottomControls select {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+}
+
 .bottomControls select {
   border-radius: 20px;
   border: none;
@@ -435,6 +478,20 @@ button {
   background-position: 90%;
   background-size: 15%;
   background-color: #7B8DCF;
+}
+
+.bottomControls .userWarning {
+  position: absolute;
+  width: 100%;
+  top: 15px;
+  font-size: 2rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+ul .userQuery {
+  border: none;
 }
 
 ul li {
@@ -452,9 +509,28 @@ ul li h2 {
   font-style: italic;
 }
 
+@media only screen and (max-width: 675px) {
+  ul li h2 {
+    font-size: 1.8rem;
+    width: 55%;
+  }
+}
+
+@media only screen and (max-width: 355px) {
+  ul li h2 {
+    width: 40%;
+  }
+}
+
 ul li h3 {
   margin-left: 10px;
   color: #717171c0;
+}
+
+@media only screen and (max-width: 675px) {
+  ul li h3 {
+    font-size: 1.3rem;
+  }
 }
 
 ul li p {
@@ -506,11 +582,11 @@ ul li a {
 }
 
 .youtube {
-  right: 10px;
+  right: 40px;
 }
 
 .wiki {
-  right: 40px;
+  right: 10px;
 }
 
 .hiddenDescription {
