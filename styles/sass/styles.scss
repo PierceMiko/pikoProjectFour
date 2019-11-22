@@ -213,13 +213,7 @@ ul {
         font-size: 1.3rem;
       }
     }
-    p {
-      color: #fff;
-      line-height: 22px;
-      overflow: hidden;
-      transition: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
-      
-    }
+
     a {
       position: absolute;
       top: 10px;
@@ -261,7 +255,25 @@ ul {
 .wiki{
   right: 10px;
 }
+.description {
+  margin: 10px 0;
+  transition: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+  button {
+    font-size: 1.6rem;
+  }
+  p {
+    color: #fff;
+    line-height: 22px;
+    transition: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+    margin: 10px 0;
+  }
+}
 .hiddenDescription {
+  overflow: hidden;
+  
   max-height: 0;
   margin: 0;
+  p {
+    margin: 0;
+  }
 }

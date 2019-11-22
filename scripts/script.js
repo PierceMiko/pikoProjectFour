@@ -37,6 +37,7 @@ app.showRecs = (results) => {
   //filter results
   //display results on dom
   const filteredList = app.filterRecs(results.Results);
+  app.$list.css({display: 'none'});
   app.$list.empty();
   app.$list.append(`<h3>You searched for:</h3>`);
   app.$list.append(
@@ -46,7 +47,9 @@ app.showRecs = (results) => {
       	<h2>${results.Info[0].Name}</h2>
         <h3>(${results.Info[0].Type})</h3>
       </div>
-      <p id="description" class="hiddenDescription">${results.Info[0].wTeaser ? `${results.Info[0].wTeaser}`: 'Media not found.'}</p>
+      <div id="description" class="description hiddenDescription">
+        <p>${results.Info[0].wTeaser ? `${results.Info[0].wTeaser}`: 'Media not found.'}</p>
+      </div>
       ${results.Info[0].wUrl ? `<a href="${results.Info[0].wUrl}" class="wiki" target="_blank"><i class="fab fa-wikipedia-w"></i></a>`: ''}
       ${results.Info[0].yUrl ? `<a href="${results.Info[0].yUrl}" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>`: ''}
     </li>`
@@ -61,6 +64,7 @@ app.showRecs = (results) => {
       </li>`
     );
   }
+  
   filteredList.forEach( (rec) => {
     const content = 
     `<li>
@@ -69,12 +73,18 @@ app.showRecs = (results) => {
       	<h2>${rec.Name}</h2>
         <h3>(${rec.Type})</h3>      
       </div>
-      <p id="description" class="hiddenDescription">${rec.wTeaser}</p>
+      <div id="description" class="description hiddenDescription">
+        <p >${rec.wTeaser}</p>
+        <button data-name="${rec.Name}">Find more like <em>${rec.Name}</em></button>
+      </div>
       <a href="${rec.wUrl}" class="wiki" target="_blank"><i class="fab fa-wikipedia-w"></i></a>
       ${rec.yUrl ? `<a href="${rec.yUrl}" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>`: ''}
       </li>`;
+    
     app.$list.append(content);
+    
   });
+  app.$list.fadeIn();
   //Scroll to list
   const y = $('main').offset().top;
   $("html, body").animate({ scrollTop: y }, 750, "swing");
@@ -84,7 +94,7 @@ app.showApiError = () => {
   //display errors on around search bars
   //display "no recs found" in results area
   // $('ul').empty();
-  $('ul').html(`<li> </li>`);
+  app.$list.html(`<li> </li>`);
 
 }
 
@@ -124,7 +134,7 @@ app.bindEvents = () => {
     app.checkQuery(query);
   });
 
-  $('ul').on('click', 'li div', function(){
+  app.$list.on('click', 'li div', function(){
     $(this).siblings('#description').toggleClass('hiddenDescription');
     $(this).find('.fas').toggleClass('rotated');
   });
@@ -139,11 +149,17 @@ app.bindEvents = () => {
   });
   $('#expandAll').on('click', function(e){
     e.preventDefault();
-    $('li p').toggleClass('hiddenDescription');
+    $('li .description').toggleClass('hiddenDescription');
     //Cool ternary operator idea found at https://www.tutorialrepublic.com/faq/how-to-toggle-text-inside-an-element-on-click-using-jquery.php
     $(this).text(
         $(this).text() === 'Expand All' ? 'Collapse All' : 'Expand All'
       );
+  });
+
+  //The find more like ___ button on each response item
+  app.$list.on('click', 'li button', function(){
+    const newQuery = $(this).data().name;
+    app.getRecs(newQuery);
   });
 }
 
