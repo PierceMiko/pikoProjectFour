@@ -131,6 +131,7 @@ app.bindEvents = () => {
 
   $('#genreFilter').on('change', function(){
     app.showRecs(app.currentList);
+    $('#expandAll').text('Expand All');
   });
 
   $('input').on('click', function(){
