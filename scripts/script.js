@@ -46,14 +46,23 @@ app.showRecs = (results) => {
       	<h2>${results.Info[0].Name}</h2>
         <h3>(${results.Info[0].Type})</h3>
       </div>
-      <p id="description" class="hiddenDescription">${results.Info[0].wTeaser}</p>
-      <a href="${results.Info[0].wUrl}" class="wiki" target="_blank"><i class="fab fa-wikipedia-w"></i></a>
+      <p id="description" class="hiddenDescription">${results.Info[0].wTeaser ? `${results.Info[0].wTeaser}`: 'Media not found.'}</p>
+      ${results.Info[0].wUrl ? `<a href="${results.Info[0].wUrl}" class="wiki" target="_blank"><i class="fab fa-wikipedia-w"></i></a>`: ''}
       ${results.Info[0].yUrl ? `<a href="${results.Info[0].yUrl}" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>`: ''}
     </li>`
   );
   app.$list.append(`<h3>Here are your recommendations:</h3>`);
+  console.log(filteredList.length);
+  if(filteredList.length === 0){
+    
+    app.$list.append(
+      `<li>
+        <p>No recommendations found.</p>
+      </li>`
+    );
+  }
   filteredList.forEach( (rec) => {
-    let content = 
+    const content = 
     `<li>
       <div class="title">
         <i class="fas fa-plus"></i>
@@ -62,10 +71,8 @@ app.showRecs = (results) => {
       </div>
       <p id="description" class="hiddenDescription">${rec.wTeaser}</p>
       <a href="${rec.wUrl}" class="wiki" target="_blank"><i class="fab fa-wikipedia-w"></i></a>
-      `;
-    rec.yUrl ? content+= `<a href="${rec.yUrl ? rec.yUrl : '#'}" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>` : ``;
-
-    content += `</li>`;
+      ${rec.yUrl ? `<a href="${rec.yUrl}" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>`: ''}
+      </li>`;
     app.$list.append(content);
   });
   //Scroll to list

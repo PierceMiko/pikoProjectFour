@@ -1,0 +1,50 @@
+// Created by Miko Sramek
+
+@function negate-colour($colour) {
+    $result : #fff - $colour;
+    @return $result
+};
+
+@function pow($base, $exponent) {
+    $result: 1;
+    @for $_ from 1 through $exponent {
+      $result: $result * $base;
+    }
+    @return $result;
+};
+
+@function hue-shift($color, $amount, $step) {
+    $cur: hue($color);
+    $newColour: adjust-color($color, $hue: $amount * $step);
+    @return $newColour;
+};
+@function lerp-color($from, $to, $percent){
+    $red: red($from);
+    $green: green($from);
+    $blue: blue($from);
+    $redTo: red($to);
+    $greenTo: green($to);
+    $blueTo: blue($to);
+
+    $newRed: abs(($redTo - $red) * $percent);
+    @if $red > $redTo {
+        $newRed: $red - $newRed;
+    }@else {
+        $newRed: $red + $newRed;
+    }
+    $newGreen: abs($greenTo - $green) * $percent;
+    @if $green > $greenTo {
+        $newGreen: $green - $newGreen;
+    }@else {
+        $newGreen: $green + $newGreen;
+    }
+    $newBlue: abs(($blueTo - $blue) * $percent);
+    @if $blue > $blueTo {
+        $newBlue: $blue - $newBlue;
+    }@else {
+        $newBlue: $blue + $newBlue;
+    }
+
+    $return: rgb($newRed, $newGreen, $newBlue);
+    @return $return;
+}

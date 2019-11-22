@@ -1,11 +1,21 @@
 @import "./setUp";
 
+@import "./mikosramek-mixins";
+@import "./mikosramek-functions";
+
 @import "./colours";
+@import "./mediaQueryValues";
 @import "./animations";
+
+.wrapper {
+  @include media($lastBreakpoint){
+    width:100%;
+  }
+}
 body {
   background: #000;
-      color: $primaryColor;
-      font-family: 'open sans', sans-serif;
+  color: $primaryColor;
+  font-family: 'open sans', sans-serif;
 }
 
 
@@ -31,15 +41,21 @@ header {
       input {
         width: 50%;
         text-align: center;
+        @include media($firstBreakpoint) {
+          width: 100%;
+        }
       }
       button {
         margin-top: 25px;
         width: 35%;
+        @include media($firstBreakpoint) {
+          width: 100%;
+        }
       }
     }
-
-// TRANSFER ANIMATION INTO H1 INSTEAD OF LOGO
-  
+  }
+  .wrapper {
+    position: relative;
   }
 }
 
@@ -69,7 +85,14 @@ button {
   width: 40px;
 }
 .information {
-  
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 2rem;
+  cursor: pointer;
+
+  padding: 5px;
+  padding-bottom: 1px;
 }
 
 
@@ -109,6 +132,10 @@ button {
   select {
     padding: 10px 30px;
     font-size: 1.5rem;
+    @include media($firstBreakpoint) {
+      width: 100%;
+      margin-bottom: 15px;
+    }
   }
   select {
     border-radius: 20px;
@@ -117,6 +144,7 @@ button {
     background-image: url(../assets/chevron.svg);
     background-repeat: no-repeat;
     background-position: 90%;
+    
   }
   .userWarning {
     position: absolute;
@@ -144,10 +172,20 @@ ul {
     }
     h2 {
       font-style: italic;
+      @include media($firstBreakpoint) {
+        font-size: 1.8rem;
+        width: 55%;
+      }
+      @include media($lastBreakpoint){
+        width: 40%;
+      }
     }
     h3 {
       margin-left: 10px;
       color: #717171c0;
+      @include media($firstBreakpoint) {
+        font-size: 1.3rem;
+      }
     }
     p {
       color: #fff;

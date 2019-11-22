@@ -4,6 +4,7 @@
   stroke-dashoffset: 345px;
   z-index: 15;
   animation: pathIn 3s forwards cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  text-transform: uppercase;
 }
 
 @keyframes pathIn {
