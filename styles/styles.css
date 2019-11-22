@@ -298,12 +298,6 @@ ul {
   }
 }
 
-@media only screen and (max-width: 355px) {
-  .wrapper {
-    width: 100%;
-  }
-}
-
 body {
   background: #000;
   color: #f4efd3;
@@ -451,9 +445,16 @@ button {
   text-align: center;
 }
 
+@media only screen and (max-width: 675px) {
+  .bottomControls form {
+    padding: 10px 0px;
+  }
+}
+
 .bottomControls input,
 .bottomControls button,
 .bottomControls select {
+  text-align: center;
   padding: 10px 30px;
   font-size: 1.5rem;
   width: 40%;
@@ -466,6 +467,7 @@ button {
   .bottomControls select {
     width: 100%;
     margin-bottom: 15px;
+    max-width: 100%;
   }
 }
 
@@ -480,7 +482,7 @@ button {
   background-repeat: no-repeat;
   background-position: 90%;
   background-size: 10%;
-  background-color: #7B8DCF;
+  background-color: #b59eb5;
 }
 
 @media only screen and (max-width: 675px) {

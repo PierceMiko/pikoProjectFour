@@ -7,11 +7,7 @@
 @import "./mediaQueryValues";
 @import "./animations";
 
-.wrapper {
-  @include media($lastBreakpoint){
-    width:100%;
-  }
-}
+
 body {
   background: #000;
   color: $primaryColor;
@@ -125,6 +121,9 @@ button {
   form{
     padding: 10px ;
     text-align: center;
+    @include media($firstBreakpoint) {
+      padding: 10px 0px;
+    }
 
   }
 
@@ -132,6 +131,7 @@ button {
   input, 
   button, 
   select {
+    text-align: center;
     padding: 10px 30px;
     font-size: 1.5rem;
     width: 40%;
@@ -139,6 +139,7 @@ button {
     @include media($firstBreakpoint) {
       width: 100%;
       margin-bottom: 15px;
+      max-width:100% ;
     }
   }
   select {
@@ -150,7 +151,7 @@ button {
     background-repeat: no-repeat;
     background-position: 90%;
     background-size: 10%;
-    background-color: $listAccent;
+    background-color: #b59eb5;
     @include media($firstBreakpoint){
       background-size: 5%;
 
