@@ -48,12 +48,12 @@ app.showRecs = (results) => {
       </div>
       <p id="description" class="hiddenDescription">${results.Info[0].wTeaser}</p>
       <a href="${results.Info[0].wUrl}" class="wiki" target="_blank"><i class="fab fa-wikipedia-w"></i></a>
-      <a href="${results.Info[0].yUrl}" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+      ${results.Info[0].yUrl ? `<a href="${results.Info[0].yUrl}" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>`: ''}
     </li>`
   );
   app.$list.append(`<h3>Here are your recommendations:</h3>`);
   filteredList.forEach( (rec) => {
-    const content = 
+    let content = 
     `<li>
       <div class="title">
         <i class="fas fa-plus"></i>
@@ -62,8 +62,10 @@ app.showRecs = (results) => {
       </div>
       <p id="description" class="hiddenDescription">${rec.wTeaser}</p>
       <a href="${rec.wUrl}" class="wiki" target="_blank"><i class="fab fa-wikipedia-w"></i></a>
-      <a href="${rec.yUrl}" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>
-    </li>`
+      `;
+    rec.yUrl ? content+= `<a href="${rec.yUrl ? rec.yUrl : '#'}" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>` : ``;
+
+    content += `</li>`;
     app.$list.append(content);
   });
   //Scroll to list
@@ -80,7 +82,7 @@ app.showApiError = () => {
 }
 
 app.showUserError = () => {
-  const warningBox = $('#userWarning')
+  const warningBox = $('.userWarning')
   warningBox.css({display: 'flex'});
   // setInterval(function() { warningBox.css({display: 'none'}); }, 5000);
   warningBox.delay(1000).fadeOut();
@@ -123,7 +125,16 @@ app.bindEvents = () => {
   $('#genreFilter').on('change', function(){
     app.showRecs(app.currentList);
   });
-  
+
+  $('input').on('click', function(){
+    $(this).select();
+  });
+  $('#expandAll').on('click', function(e){
+    e.preventDefault();
+    $('li p').toggleClass('hiddenDescription');
+    //Cool ternary operator idea found at https://www.tutorialrepublic.com/faq/how-to-toggle-text-inside-an-element-on-click-using-jquery.php
+    $(this).text($(this).text() === 'Expand All' ? 'Collapse All' : 'Expand All');
+  });
 }
 
 app.getDomElements = () => {

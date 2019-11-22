@@ -407,6 +407,7 @@ button {
 
 .bottomControls {
   padding: 20px 0px;
+  position: relative;
 }
 
 .bottomControls form {
@@ -430,6 +431,20 @@ button {
   background-image: url(../assets/chevron.svg);
   background-repeat: no-repeat;
   background-position: 90%;
+}
+
+.bottomControls .userWarning {
+  position: absolute;
+  width: 100%;
+  top: 15px;
+  font-size: 2rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+ul .userQuery {
+  border: none;
 }
 
 ul li {
@@ -501,11 +516,11 @@ ul li a {
 }
 
 .youtube {
-  right: 10px;
+  right: 40px;
 }
 
 .wiki {
-  right: 40px;
+  right: 10px;
 }
 
 .hiddenDescription {
