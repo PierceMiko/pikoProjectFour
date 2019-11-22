@@ -61,6 +61,8 @@ button {
   border: none;
   background-color: $primaryColor;
   cursor: pointer;
+  text-transform: uppercase;
+  font-size: 1.8rem;
 }
 
 
@@ -113,9 +115,12 @@ button {
     border-radius: 20px;
     border:none;
     appearance: none;
+    color: #000;
     background-image: url(../assets/chevron.svg);
     background-repeat: no-repeat;
     background-position: 90%;
+    background-size: 15%;
+    background-color: $listAccent;
   }
 }
 
