@@ -101,7 +101,7 @@ button {
   align-items: center;
   justify-content: space-evenly;
   position: relative;
-  bottom: 180px;
+  bottom: 220px;
 
   text-transform: none;
 
@@ -111,7 +111,10 @@ button {
       width: 100%;
       font-size: 2rem;
       justify-content: center;
-      bottom: 160px;
+      bottom: 200px;
+    }
+    @include media($lastBreakpoint){
+      bottom: 220px;
     }
   
 }
@@ -275,5 +278,24 @@ ul {
   margin: 0;
   p {
     margin: 0;
+  }
+}
+
+footer{
+    margin-top: 60px;
+
+  border-top: 1px solid $primaryAccent;
+
+  .footerContent {
+    text-align: center;
+    font-size: 1.5rem;
+    p {
+      margin: 5px auto;
+    }
+    
+    a {
+      color: $listAccent;
+      font-style: italic;
+    }
   }
 }

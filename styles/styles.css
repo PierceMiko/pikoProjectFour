@@ -422,7 +422,7 @@ button {
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
   position: relative;
-  bottom: 180px;
+  bottom: 220px;
   text-transform: none;
   color: #ff0000;
 }
@@ -434,7 +434,13 @@ button {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    bottom: 160px;
+    bottom: 200px;
+  }
+}
+
+@media only screen and (max-width: 355px) {
+  .userWarning {
+    bottom: 220px;
   }
 }
 
@@ -638,4 +644,23 @@ ul li a {
 
 .hiddenDescription p {
   margin: 0;
+}
+
+footer {
+  margin-top: 60px;
+  border-top: 1px solid #949494;
+}
+
+footer .footerContent {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+footer .footerContent p {
+  margin: 5px auto;
+}
+
+footer .footerContent a {
+  color: #7B8DCF;
+  font-style: italic;
 }
