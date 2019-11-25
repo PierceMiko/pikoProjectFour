@@ -1,7 +1,7 @@
 const app = {};
 
 app.url = `https://tastedive.com/api/similar?`;
-app.key = `349895-MediaRec-TXFIUD0F`;
+app.apiKey = `349895-MediaRec-TXFIUD0F`;
 app.currentList = [];
 
 app.checkQuery = (query) => {
@@ -22,7 +22,7 @@ app.getRecs = (query) => {
       method: 'GET',
       dataType: 'jsonp',
       data: {
-        k: app.key,
+        k: app.apiKey,
         q: query,
         info: 1
       }
@@ -102,11 +102,12 @@ app.showRecs = (results) => {
 }
 
 app.showApiError = (error) => {
-  //display errors on around search bars
-  //display "no recs found" in results area
+  //If the api doens't return a specific error, just display the status and text ie error 404
   if(error.error === undefined){
-    
+    $('#searchMedia').val(error.statusText +' '+ error.status);
+    $('#searchMediaBottom').val(error.statusText +' '+ error.status);
   }else{
+    //If the api returned a specific error, let the user know ie apikey not correct / limit reached
     $('#searchMedia').val(error.error);
     $('#searchMediaBottom').val(error.error);
   }
