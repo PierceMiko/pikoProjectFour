@@ -186,10 +186,7 @@ ul {
   .userQuery {
     border: none;
   }
-  h3{
-      font-size: 1.6rem;
-      color: $listAccent;
-  }
+  
   li {
     font-size: 1.5rem;
     padding: 10px 0;
@@ -224,6 +221,13 @@ ul {
       font-size: 2rem;
     }
     
+  }
+  .resultHeader{
+    border: none;
+    h3 { 
+    font-size: 1.6rem;
+    color: $listAccent;
+    }
   }
 }
 .title {

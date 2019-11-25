@@ -7,6 +7,7 @@ app.currentList = [];
 app.checkQuery = (query) => {
   if(query !== ''){
     $('#bottomControls').fadeIn();
+    $('footer').removeClass('visuallyHidden');
     app.getRecs(query);
   }else{
     app.showUserError();
@@ -27,13 +28,16 @@ app.getRecs = (query) => {
       }
     }
   ).then( (results) => { 
-    console.log(results);
-    app.currentList = results.Similar;
-    app.showRecs(app.currentList); 
+    if(results.error === undefined){
+      //then pass results to showRecs
+      app.currentList = results.Similar;
+      app.showRecs(app.currentList); 
+    }else{
+      app.showApiError(results);
+    }
   }).fail((error) => {
-    app.showApiError()
+    app.showApiError(error)
   });
-  //then pass results to showRecs
 }
 
 app.showRecs = (results) => {
@@ -41,8 +45,11 @@ app.showRecs = (results) => {
   //display results on dom
   const filteredList = app.filterRecs(results.Results);
   app.$list.css({display: 'none'});
+  //Get rid of anything in the list
   app.$list.empty();
-  app.$list.append(`<h3>You searched for:</h3>`);
+  //Add the H3
+  app.$list.append(`<li class="resultHeader"><h3>You searched for:</h3></li>`);
+  //Add what the user searched for
   app.$list.append(
     `<li class="userQuery">
       <div class="title">
@@ -57,7 +64,9 @@ app.showRecs = (results) => {
       ${results.Info[0].yUrl ? `<a href="${results.Info[0].yUrl}" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>`: ''}
     </li>`
   );
-  app.$list.append(`<h3>Here are your recommendations:</h3>`);
+  //Add another h3
+  app.$list.append(`<li class="resultHeader"><h3>Here are your recommendations:</h3></li>`);
+  //If there are no results, display that
   if(filteredList.length === 0){
     app.$list.append(
       `<li>
@@ -66,6 +75,7 @@ app.showRecs = (results) => {
     );
   }
   
+  //For each item in the filtered list display it as a list item
   filteredList.forEach( (rec) => {
     const content = 
     `<li>
@@ -83,34 +93,41 @@ app.showRecs = (results) => {
       </li>`;
     
     app.$list.append(content);
-    
   });
+  //Fade in the list
   app.$list.fadeIn();
   //Scroll to list
   const y = $('main').offset().top;
   $('html, body').animate({ scrollTop: y }, 750, 'swing');
 }
 
-app.showApiError = () => {
+app.showApiError = (error) => {
   //display errors on around search bars
   //display "no recs found" in results area
-  // $('ul').empty();
-  app.$list.html(`<li> </li>`);
-
+  if(error.error === undefined){
+    
+  }else{
+    $('#searchMedia').val(error.error);
+    $('#searchMediaBottom').val(error.error);
+  }
 }
 
 app.showUserError = () => {
-  const warningBox = $('.userWarning')
+  const warningBox = $('.userWarning');
+  //Show the warning boxes
   warningBox.css({display: 'flex'});
-  // setInterval(function() { warningBox.css({display: 'none'}); }, 5000);
+  //After 1000 seconds, fade the warnings out
   warningBox.delay(1000).fadeOut();
 }
 
 app.filterRecs = (list) => {
+  //Get the value from the drop down list
   const genreFilter = $('#genreFilter').val();
+  //If the dropdown is selected to be 'all', then don't filter
   if(genreFilter === 'all'){
     return list;
   }else {
+    //Return a filtered list where the recommendation's type is what the dropdown is set to
     return list.filter((rec) => {
       return rec.Type === genreFilter;
     });
@@ -118,10 +135,7 @@ app.filterRecs = (list) => {
 }
 
 app.bindEvents = () => {
-  //search button
-  //search bar
-  //drop down filter
-
+  //For both top and bottom search buttons, pass the queries to the checkQuery function
   $('#topSearch').on('submit', function(event){
     event.preventDefault();
     const query = $('#topSearch input').val();
@@ -135,37 +149,40 @@ app.bindEvents = () => {
     app.checkQuery(query);
   });
 
+  //For the divs in the list, if they're clicked get the description sibling and expand it
   app.$list.on('click', 'li div', function(){
     $(this).siblings('#description').toggleClass('hiddenDescription');
     $(this).find('.fas').toggleClass('rotated');
   });
 
+  //When the user changes the filter choice, show recs based (where it will also get filtered)
   $('#genreFilter').on('change', function(){
     app.showRecs(app.currentList);
+    //Set the expand/collapse all button back to default state
     $('#expandAll')
       .text('Expand All')
       .data().state = 'collapsed';
   });
 
+  //When the user clicks on the inputs, have them select all the text
   $('input').on('click', function(){
     $(this).select();
   });
+  //When the user hits the expand / collapse all button, update the button text, and 'toggle' the expandable descriptions
   $('#expandAll').on('click', function(e){
     e.preventDefault();
     if($(this).data().state === 'collapsed'){
-      console.log('collapsed');
       $(this).data().state = 'expanded';
       $('li .description').removeClass('hiddenDescription');
       $(this).text('Collapse All');
     }else{
-      console.log('expanded');
       $(this).data().state = 'collapsed';
       $('li .description').addClass('hiddenDescription');
       $(this).text('Expand All');
     }
   });
 
-  //The find more like ___ button on each response item
+  //On user hitting the "Find more like ___" button in the descriptions pass the stored data value to getRecs()
   app.$list.on('click', 'li button', function(){
     const newQuery = $(this).data().name;
     app.getRecs(newQuery);
@@ -175,7 +192,6 @@ app.bindEvents = () => {
 app.getDomElements = () => {
   app.$list = $('ul');
 }
-
 
 app.init = () => {
   app.getDomElements();

@@ -34,11 +34,12 @@
           </svg>
         </h1>
         <h2>Enter a movie, book, show, or musical artist!</h2>
+        <!-- Start of Top Search Form -->
         <form action="submit" id="topSearch">
           <label for="searchMedia" class="visuallyHidden">Your search term:</label>
           <input type="text" name="searchMedia" id="searchMedia" placeholder="find something new">
           <button>Search</button>
-        </form>
+        </form> <!-- End of Top Search Form -->
         <!-- Start of User Warning Div -->
         <div class="userWarning" id="userWarning">
           <i class="fas fa-exclamation-circle"></i>
@@ -62,6 +63,7 @@
           <i class="fas fa-exclamation-circle"></i>
           <p>Please enter a search term.</p>
         </div> <!-- End of User Warning Div -->
+        <!-- Start of Bottom Search Form -->
         <form action="submit">
           <label for="genreFilter" class="visuallyHidden">Filter your results:</label>
           <select name="genreFilter" id="genreFilter">
@@ -75,16 +77,15 @@
             <option value="game">Games</option>
           </select>
           <button id="expandAll" data-state='collapsed'>Expand All</button>
-        </form>
+        </form> <!-- End of Bottom Search Form -->
       </div>
       <!-- Start of Results List -->
       <ul>
-      
+        <!-- Results generated here by script.js -->
       </ul> <!-- End of Results List -->
-
     </div> <!-- End of Wrapper -->
   </main>
-  <footer>
+  <footer class="visuallyHidden">
     <!-- Start of Wrapper -->
     <div class="wrapper">
       <div class="footerContent">
