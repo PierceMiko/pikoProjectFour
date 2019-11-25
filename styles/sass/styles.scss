@@ -1,13 +1,13 @@
+/* Setup */
 @import "./setUp";
 
-@import "./mikosramek-mixins";
-@import "./mikosramek-functions";
+@import "./mixins";
 
 @import "./colours";
 @import "./mediaQueryValues";
 @import "./animations";
 
-
+/* Main Stylings */
 body {
   background: #000;
   color: $primaryColor;
