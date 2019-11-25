@@ -490,6 +490,7 @@ button {
   background-position: 90%;
   background-size: 10%;
   background-color: #b59eb5;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 675px) {

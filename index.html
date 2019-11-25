@@ -36,7 +36,7 @@
         <h2>Enter a movie, book, show, or musical artist!</h2>
         <form action="submit" id="topSearch">
           <label for="searchMedia" class="visuallyHidden">Your search term:</label>
-          <input type="text" name="searchMedia" placeholder="find something new">
+          <input type="text" name="searchMedia" id="searchMedia" placeholder="find something new">
           <button>Search</button>
         </form>
         <!-- Start of User Warning Div -->
@@ -53,8 +53,8 @@
     <div class="wrapper">
       <div id="bottomControls" class="hidden bottomControls">
         <form action="submit" id="bottomSearch">
-          <label for="searchMedia" class="visuallyHidden">Your search term:</label>
-          <input type="text" name="searchMedia" placeholder="find something new">
+          <label for="searchMediaBottom" class="visuallyHidden">Your search term:</label>
+          <input type="text" name="searchMediaBottom" id="searchMediaBottom" placeholder="find something new">
           <button>Search</button>
         </form>
         <!-- Start of User Warning Div -->
@@ -63,7 +63,8 @@
           <p>Please enter a search term.</p>
         </div> <!-- End of User Warning Div -->
         <form action="submit">
-          <select name="genre" id="genreFilter">
+          <label for="genreFilter" class="visuallyHidden">Filter your results:</label>
+          <select name="genreFilter" id="genreFilter">
             <option value="all">All</option>
             <option value="music">Music</option>
             <option value="movie">Movies</option>
@@ -73,7 +74,7 @@
             <option value="author">Authors</option>
             <option value="game">Games</option>
           </select>
-          <button id="expandAll">Expand All</button>
+          <button id="expandAll" data-state='collapsed'>Expand All</button>
         </form>
       </div>
       <!-- Start of Results List -->

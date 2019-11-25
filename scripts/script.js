@@ -27,8 +27,11 @@ app.getRecs = (query) => {
       }
     }
   ).then( (results) => { 
+    console.log(results);
     app.currentList = results.Similar;
     app.showRecs(app.currentList); 
+  }).fail((error) => {
+    app.showApiError()
   });
   //then pass results to showRecs
 }
@@ -55,9 +58,7 @@ app.showRecs = (results) => {
     </li>`
   );
   app.$list.append(`<h3>Here are your recommendations:</h3>`);
-  console.log(filteredList.length);
   if(filteredList.length === 0){
-    
     app.$list.append(
       `<li>
         <p>No recommendations found.</p>
@@ -87,7 +88,7 @@ app.showRecs = (results) => {
   app.$list.fadeIn();
   //Scroll to list
   const y = $('main').offset().top;
-  $("html, body").animate({ scrollTop: y }, 750, "swing");
+  $('html, body').animate({ scrollTop: y }, 750, 'swing');
 }
 
 app.showApiError = () => {
@@ -141,7 +142,9 @@ app.bindEvents = () => {
 
   $('#genreFilter').on('change', function(){
     app.showRecs(app.currentList);
-    $('#expandAll').text('Expand All');
+    $('#expandAll')
+      .text('Expand All')
+      .data().state = 'collapsed';
   });
 
   $('input').on('click', function(){
@@ -149,11 +152,17 @@ app.bindEvents = () => {
   });
   $('#expandAll').on('click', function(e){
     e.preventDefault();
-    $('li .description').toggleClass('hiddenDescription');
-    //Cool ternary operator idea found at https://www.tutorialrepublic.com/faq/how-to-toggle-text-inside-an-element-on-click-using-jquery.php
-    $(this).text(
-        $(this).text() === 'Expand All' ? 'Collapse All' : 'Expand All'
-      );
+    if($(this).data().state === 'collapsed'){
+      console.log('collapsed');
+      $(this).data().state = 'expanded';
+      $('li .description').removeClass('hiddenDescription');
+      $(this).text('Collapse All');
+    }else{
+      console.log('expanded');
+      $(this).data().state = 'collapsed';
+      $('li .description').addClass('hiddenDescription');
+      $(this).text('Expand All');
+    }
   });
 
   //The find more like ___ button on each response item
