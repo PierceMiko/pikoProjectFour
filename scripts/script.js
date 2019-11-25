@@ -7,7 +7,7 @@ app.currentList = [];
 app.checkQuery = (query) => {
   if(query !== ''){
     $('#bottomControls').fadeIn();
-    $('footer').removeClass('visuallyHidden');
+    $('footer').removeClass('hidden');
     app.getRecs(query);
   }else{
     app.showUserError();
@@ -53,15 +53,15 @@ app.showRecs = (results) => {
   app.$list.append(
     `<li class="userQuery">
       <div class="title">
-        <i class="fas fa-plus"></i>
+        <button class="expandDescriptionButton"><i class="fas fa-plus"></i></button>
       	<h2>${results.Info[0].Name}</h2>
         <h3>(${results.Info[0].Type})</h3>
       </div>
+      ${results.Info[0].yUrl ? `<a href="${results.Info[0].yUrl}" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>`: ''}
+      ${results.Info[0].wUrl ? `<a href="${results.Info[0].wUrl}" class="wiki" target="_blank"><i class="fab fa-wikipedia-w"></i></a>`: ''}
       <div id="description" class="description hiddenDescription">
         <p>${results.Info[0].wTeaser ? `${results.Info[0].wTeaser}`: 'Media not found.'}</p>
       </div>
-      ${results.Info[0].wUrl ? `<a href="${results.Info[0].wUrl}" class="wiki" target="_blank"><i class="fab fa-wikipedia-w"></i></a>`: ''}
-      ${results.Info[0].yUrl ? `<a href="${results.Info[0].yUrl}" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>`: ''}
     </li>`
   );
   //Add another h3
@@ -80,16 +80,17 @@ app.showRecs = (results) => {
     const content = 
     `<li>
       <div class="title">
-        <i class="fas fa-plus"></i>
+        <button class="expandDescriptionButton"><i class="fas fa-plus"></i></button>
       	<h2>${rec.Name}</h2>
         <h3>(${rec.Type})</h3>      
       </div>
+      ${rec.yUrl ? `<a href="${rec.yUrl}" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>`: ''}
+      <a href="${rec.wUrl}" class="wiki" target="_blank"><i class="fab fa-wikipedia-w"></i></a>
       <div id="description" class="description hiddenDescription">
         <p >${rec.wTeaser}</p>
         <button data-name="${rec.Name}">Find more like <em>${rec.Name}</em></button>
       </div>
-      <a href="${rec.wUrl}" class="wiki" target="_blank"><i class="fab fa-wikipedia-w"></i></a>
-      ${rec.yUrl ? `<a href="${rec.yUrl}" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>`: ''}
+      
       </li>`;
     
     app.$list.append(content);
@@ -134,7 +135,10 @@ app.filterRecs = (list) => {
     });
   }
 }
-
+app.expandRec = (div) => {
+  $(div).siblings('#description').toggleClass('hiddenDescription');
+  $(div).find('.fas').toggleClass('rotated');
+}
 app.bindEvents = () => {
   //For both top and bottom search buttons, pass the queries to the checkQuery function
   $('#topSearch').on('submit', function(event){
@@ -152,8 +156,7 @@ app.bindEvents = () => {
 
   //For the divs in the list, if they're clicked get the description sibling and expand it
   app.$list.on('click', 'li div', function(){
-    $(this).siblings('#description').toggleClass('hiddenDescription');
-    $(this).find('.fas').toggleClass('rotated');
+    app.expandRec(this);
   });
 
   //When the user changes the filter choice, show recs based (where it will also get filtered)
@@ -175,16 +178,18 @@ app.bindEvents = () => {
     if($(this).data().state === 'collapsed'){
       $(this).data().state = 'expanded';
       $('li .description').removeClass('hiddenDescription');
+      $('li .fa-plus').addClass('rotated');
       $(this).text('Collapse All');
     }else{
       $(this).data().state = 'collapsed';
       $('li .description').addClass('hiddenDescription');
+      $('li .rotated').removeClass('rotated');
       $(this).text('Expand All');
     }
   });
 
   //On user hitting the "Find more like ___" button in the descriptions pass the stored data value to getRecs()
-  app.$list.on('click', 'li button', function(){
+  app.$list.on('click', '.description button', function(){
     const newQuery = $(this).data().name;
     app.getRecs(newQuery);
   });
