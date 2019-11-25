@@ -305,7 +305,7 @@ body {
 }
 
 header {
-  background-image: url(../assets/header-image.jpg);
+  background-image: url(../assets/headerImage.jpg);
   background-size: cover;
   background-position: right bottom;
   min-height: 90vh;

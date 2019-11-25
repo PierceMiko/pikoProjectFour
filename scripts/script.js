@@ -57,8 +57,8 @@ app.showRecs = (results) => {
       	<h2>${results.Info[0].Name}</h2>
         <h3>(${results.Info[0].Type})</h3>
       </div>
-      ${results.Info[0].yUrl ? `<a href="${results.Info[0].yUrl}" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>`: ''}
-      ${results.Info[0].wUrl ? `<a href="${results.Info[0].wUrl}" class="wiki" target="_blank"><i class="fab fa-wikipedia-w"></i></a>`: ''}
+      ${results.Info[0].yUrl ? `<a href="${results.Info[0].yUrl}" class="youtube" target="_blank"><i class="fab fa-youtube" aria-label="Go to the most recent youtube video for ${results.Info[0].Name}."></i></a>`: ''}
+      ${results.Info[0].wUrl ? `<a href="${results.Info[0].wUrl}" class="wiki" target="_blank"><i class="fab fa-wikipedia-w" aria-label="Go to the Wikipedia page for this ${results.Info[0].Name}."></i></a>`: ''}
       <div id="description" class="description hiddenDescription">
         <p>${results.Info[0].wTeaser ? `${results.Info[0].wTeaser}`: 'Media not found.'}</p>
       </div>
@@ -84,8 +84,8 @@ app.showRecs = (results) => {
       	<h2>${rec.Name}</h2>
         <h3>(${rec.Type})</h3>      
       </div>
-      ${rec.yUrl ? `<a href="${rec.yUrl}" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>`: ''}
-      <a href="${rec.wUrl}" class="wiki" target="_blank"><i class="fab fa-wikipedia-w"></i></a>
+      ${rec.yUrl ? `<a href="${rec.yUrl}" class="youtube" target="_blank"><i class="fab fa-youtube" aria-label="Go to the most recent youtube video for ${rec.Name}."></i></a>`: ''}
+      <a href="${rec.wUrl}" class="wiki" target="_blank"><i class="fab fa-wikipedia-w" aria-label="Go to the Wikipedia page for this ${rec.Name}."></i></a>
       <div id="description" class="description hiddenDescription">
         <p >${rec.wTeaser}</p>
         <button data-name="${rec.Name}">Find more like <em>${rec.Name}</em></button>
